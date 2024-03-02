@@ -67,11 +67,11 @@ public class DummyControllerTest {
     //Exception e로 대체 가능
     @DeleteMapping("/dummy/user/{id}")
     public String delete(@PathVariable int id){
-       // try{
+        try{
             userRepository.deleteById(id);
-      //  }catch (EmptyResultDataAccessException e){
-       //     return "삭제에 실패하였습니다. 해당 id는 DB에 없습니다.";
-       // }
+        }catch (EmptyResultDataAccessException e){
+            return "삭제에 실패하였습니다. 해당 id는 DB에 없습니다.";
+        }
         return "삭제되었습니다. id :" + id;
     }
 
