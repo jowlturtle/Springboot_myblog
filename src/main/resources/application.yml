@@ -12,6 +12,9 @@ spring:
     view:
       prefix: /WEB-INF/views/
       suffix: .jsp
+   # static-path-pattern: /static/**
+   # resources:
+    #  static-location: classpath:/blog/static
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
