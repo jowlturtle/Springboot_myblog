@@ -17,14 +17,14 @@ public class UserApiController {
 
     private final UserService userService;
 
-    @PostMapping("/api/user")
+    @PostMapping("/auth/joinProc")
     public ResponseDto<Integer> save(@RequestBody User user){
         System.out.println("UserApiContorller : save 호출됨");
         userService.회원가입(user);
         user.setRole(RoleType.USER);
         return new ResponseDto<Integer>(HttpStatus.OK.value(), 1); //자바오브젝트를 JSON으로 변환해서 리턴(Jackson)
     }
-
+/*
     @PostMapping("/api/user/login")
     public ResponseDto<Integer> login(@RequestBody User user, HttpSession session){
         System.out.println("UserApiController : login호출됨");
@@ -34,4 +34,6 @@ public class UserApiController {
         }
         return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
     }
+
+ */
 }
