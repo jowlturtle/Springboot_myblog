@@ -1,5 +1,6 @@
 package com.cos.myblog.Controller;
 
+import com.cos.myblog.Config.auth.PrincipalDetail;
 import com.cos.myblog.Repository.BoardRepository;
 import com.cos.myblog.Service.BoardService;
 import lombok.RequiredArgsConstructor;

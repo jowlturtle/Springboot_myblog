@@ -4,6 +4,9 @@
            $("#btn-save").on("click", () =>{ //()=>{} this 바인딩하기 위해
                this.save();
            });
+           $("#btn-delete").on("click", () =>{ //()=>{} this 바인딩하기 위해
+               this.deleteById();
+           });
 
        },
 
@@ -31,7 +34,25 @@
             //회원가입 응답 데이터 유요하지 않음
             alert(JSON.stringify(error));
          });
-        }
-    }
+        },
+
+    deleteById:function(){
+
+         var id = $("#id").val();
+
+         $.ajax({
+            type: "DELETE",
+            url: "/api/board/"+id,
+            dataType: "json"
+         }).done(function(resp){
+            alert("삭제가 완료되었습니다");
+           // console.log(resp);
+            location.href = "/";
+         }).fail(function(error){
+            //회원가입 응답 데이터 유요하지 않음
+            alert(JSON.stringify(error));
+         });
+    },
+   }
 
 index.init();
