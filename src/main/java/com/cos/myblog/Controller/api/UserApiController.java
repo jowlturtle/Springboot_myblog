@@ -1,4 +1,4 @@
-package com.cos.myblog.Controller;
+package com.cos.myblog.Controller.api;
 
 import com.cos.myblog.DTO.ResponseDto;
 import com.cos.myblog.Service.UserService;
@@ -7,6 +7,7 @@ import com.cos.myblog.model.User;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,7 +22,6 @@ public class UserApiController {
     public ResponseDto<Integer> save(@RequestBody User user){
         System.out.println("UserApiContorller : save 호출됨");
         userService.회원가입(user);
-        user.setRole(RoleType.USER);
         return new ResponseDto<Integer>(HttpStatus.OK.value(), 1); //자바오브젝트를 JSON으로 변환해서 리턴(Jackson)
     }
 /*

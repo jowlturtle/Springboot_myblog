@@ -1,5 +1,6 @@
 package com.cos.myblog;
 
+import com.cos.myblog.Repository.UserRepository;
 import com.cos.myblog.model.RoleType;
 import com.cos.myblog.model.User;
 import jakarta.transaction.Transactional;

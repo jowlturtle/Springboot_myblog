@@ -24,7 +24,7 @@ public class Board {
     @Lob // 대용량 데이터
     private String content;
 
-    @ColumnDefault("0")
+    //@ColumnDefault("0")
     private int count; //조회수
 
     @ManyToOne

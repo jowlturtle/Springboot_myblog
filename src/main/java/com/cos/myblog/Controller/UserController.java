@@ -1,14 +1,12 @@
 package com.cos.myblog.Controller;
 
+import com.cos.myblog.Config.auth.PrincipalDetail;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class UserController {
-    @GetMapping({"","/"})
-    public String index(){
-        return "index";
-    }
 
     @GetMapping("/auth/joinForm")
     public String joinForm(){
