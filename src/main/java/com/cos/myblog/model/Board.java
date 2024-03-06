@@ -1,5 +1,6 @@
 package com.cos.myblog.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -32,7 +33,8 @@ public class Board {
     private User user;
 
     @OneToMany(mappedBy = "board") //mappedby가 있으면 연관관계의 주인이 아니다, DB에 컬럼을 만들지 마세요, 객체명 기입
-    private List<Reply> reply;
+    @JsonIgnoreProperties({"board"})
+    private List<Reply> replys;
 
     @CreationTimestamp
     private Timestamp createDate;
