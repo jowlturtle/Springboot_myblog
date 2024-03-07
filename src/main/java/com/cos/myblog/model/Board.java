@@ -32,8 +32,9 @@ public class Board {
     @JoinColumn(name = "userId")
     private User user;
 
-    @OneToMany(mappedBy = "board") //mappedby가 있으면 연관관계의 주인이 아니다, DB에 컬럼을 만들지 마세요, 객체명 기입
+    @OneToMany(mappedBy = "board", fetch = FetchType.EAGER, cascade=CascadeType.REMOVE) //mappedby가 있으면 연관관계의 주인이 아니다, DB에 컬럼을 만들지 마세요, 객체명 기입
     @JsonIgnoreProperties({"board"})
+    @OrderBy("id desc")
     private List<Reply> replys;
 
     @CreationTimestamp

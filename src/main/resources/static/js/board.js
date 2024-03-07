@@ -8,8 +8,11 @@
                this.deleteById();
            });
            $("#btn-update").on("click", () =>{ //()=>{} this 바인딩하기 위해
-                          this.update();
-                      });
+               this.update();
+           });
+           $("#btn-reply-save").on("click", () =>{ //()=>{} this 바인딩하기 위해
+               this.replySave();
+           });
 
        },
 
@@ -35,7 +38,7 @@
         },
 
     deleteById:function(){
-         let id = $("#id").val();
+         let id = $("#id").text();
 
          $.ajax({
             type: "DELETE",
@@ -71,6 +74,100 @@
                 alert(JSON.stringify(error));
              });
           },
-   }
+
+    replySave:function(){
+             alert("adfa");
+
+             let data = {
+                   userId: $("#userId").val(),
+                   boardId: $("#boardId").val(),
+                   content: $("#reply-content").val()
+             };
+             console.log(data);
+
+             $.ajax({
+                type: "POST",
+                url: `/api/board/${data.boardId}/reply`,
+                data: JSON.stringify(data),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json"
+             }).done(function(resp){
+                alert("댓글작성이 완료되었습니다");
+               // console.log(resp);
+                location.href = `/board/${data.boardId}`;
+             }).fail(function(error){
+                //회원가입 응답 데이터 유요하지 않음
+                alert(JSON.stringify(error));
+             });
+
+          },
+
+          replySave:function(){
+                       alert("adfa");
+
+                       let data = {
+                             userId: $("#userId").val(),
+                             boardId: $("#boardId").val(),
+                             content: $("#reply-content").val()
+                       };
+                       console.log(data);
+
+                       $.ajax({
+                          type: "POST",
+                          url: `/api/board/${data.boardId}/reply`,
+                          data: JSON.stringify(data),
+                          contentType: "application/json; charset=utf-8",
+                          dataType: "json"
+                       }).done(function(resp){
+                          alert("댓글작성이 완료되었습니다");
+                         // console.log(resp);
+                          location.href = `/board/${data.boardId}`;
+                       }).fail(function(error){
+                          //회원가입 응답 데이터 유요하지 않음
+                          alert(JSON.stringify(error));
+                       });
+
+                    },
+replySave:function(){
+
+             let data = {
+                   userId: $("#userId").val(),
+                   boardId: $("#boardId").val(),
+                   content: $("#reply-content").val()
+             };
+             console.log(data);
+
+             $.ajax({
+                type: "POST",
+                url: `/api/board/${data.boardId}/reply`,
+                data: JSON.stringify(data),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json"
+             }).done(function(resp){
+                alert("댓글작성이 완료되었습니다");
+               // console.log(resp);
+                location.href = `/board/${data.boardId}`;
+             }).fail(function(error){
+                //회원가입 응답 데이터 유요하지 않음
+                alert(JSON.stringify(error));
+             });
+
+          },
+replyDelete : function(boardId,replyId){
+                $.ajax({
+                   type: "DELETE",
+                   url: `/api/board/${boardId}/reply/${replyId}`,
+                   dataType: "json"
+                }).done(function(resp){
+                   alert("댓글 삭제가 완료되었습니다");
+                  // console.log(resp);
+                   location.href = `/board/${boardId}`;
+                }).fail(function(error){
+                   //회원가입 응답 데이터 유요하지 않음
+                   alert(JSON.stringify(error));
+                });
+
+          },
+           }
 
 index.init();

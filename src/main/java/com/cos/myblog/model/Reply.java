@@ -1,8 +1,10 @@
 package com.cos.myblog.model;
 
 
+import com.cos.myblog.DTO.ReplySaveRequestDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
@@ -14,6 +16,7 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Builder
 public class Reply {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,4 +35,10 @@ public class Reply {
 
     @CreationTimestamp
     private Timestamp createDate;
+
+    public void update(User user,Board board, String content){
+       setUser(user);
+       setBoard(board);
+       setContent(content);
+    }
 }

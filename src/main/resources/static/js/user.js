@@ -30,10 +30,13 @@ let index = {
             contentType: "application/json; charset=utf-8",
             dataType: "json" //요청을 서버로해서 응답이 왔을 때 기본적으로 모든 것이 문자열 (생긴 게 json이라면 ) => javaScript 오브젝트로 변환
          }).done(function(resp){
-            //회원가입 응답 데이터 유효
-            alert("회원가입이 완료되었습니다");
-           // console.log(resp);
-            location.href = "/";
+            if(resp.status === 500){
+              alert("회원가입에 실패했습니다")
+            }else{
+              alert("회원가입이 완료되었습니다");
+             // console.log(resp);
+              location.href = "/";
+            }
          }).fail(function(error){
             //회원가입 응답 데이터 유요하지 않음
             alert(JSON.stringify(error));
